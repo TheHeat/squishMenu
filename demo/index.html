@@ -1,0 +1,47 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>squishMenu.js</title>
+
+	<link rel="stylesheet" href="demo.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="demo.js"></script>
+</head>
+<body>
+
+	<header>
+  		<h1>squishMenu.js</h1>
+  		<p>Automagically squishes menus the minute they get too big for their boots</p>
+	</header>
+	<nav id="site-nav">
+		<span class="menu-toggle">Menu</span>
+		<ul class="menu">
+		    <li class="menu-item"><a href="#">Home</a></li>
+		    <li class="menu-item"><a href="#">About</a></li>
+		    <li class="menu-item"><a href="#">Contact Us</a></li>
+		    <li class="menu-item"><a href="#">Our Services</a></li>
+		</ul>
+	</nav>
+
+<pre class="report">
+containerWidth: <span id="container-width"></span>
+itemsWidth: <span id="items-width"></span>
+</pre>
+
+	<p>Actually it doesn't.</p>
+
+	<p>It just makes it easier for <em>you</em> to squish the menu when you need to by alerting you to the fact the container is <code>.too-small</code>. What you decide to do with that information is up to you.</p>
+
+	<p>The script measures the width of each menu item to create an <var>itemsWidth</var> value and compares it to the <var>containerWidth</var>. I've included some basic styles to illustrate the point.</p>
+
+	<h2>User Manual</h2>
+	<ol>
+		<li>squishMenu uses jQuery - you'll need that.</li>
+		<li>Target your container with <code>$('#your-container').squishMenu();</code></li>
+		<li>The script looks for and measures the combined width of all <code>.list-item</code> elements inside the targetted container. This is a naming convention from WordPress that is as good as any.</li>
+		<li>It's important that the menu-items are <code>display:inline-block;</code> in their default state. Anything fancypants like flexbox wont give you a usable measurement to compare to the container.</li>
+	</ol>
+
+</body>
+</html>

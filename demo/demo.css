@@ -1,0 +1,133 @@
+.menu-link, .menu-item a, .menu-toggle {
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding: 1em;
+  background: silver;
+}
+.menu-link:hover, .menu-item a:hover, .menu-toggle:hover {
+  background: #a7a7a7;
+}
+
+nav .menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.menu-item {
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+}
+.menu-item + .menu-item {
+  margin-left: 0.5em;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  display: none;
+}
+
+.too-small .menu-toggle {
+  display: block;
+}
+
+.too-small ul {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: 0.5s;
+          transition: 0.5s;
+}
+
+.too-small .menu-item {
+  margin: 0;
+}
+
+.too-small.is-open ul {
+  max-height: 60em;
+  -webkit-transition: 1s;
+          transition: 1s;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 2em;
+  line-height: 1.4;
+}
+
+header {
+  border-bottom: solid thin;
+  margin-bottom: 1em;
+}
+
+.report {
+  position: relative;
+  color: white;
+  background: black;
+  padding: 1em;
+  border: solid thin black;
+}
+.report:before {
+  display: block;
+  padding: 0 0 0.5em;
+  content: "Bags of room... ";
+}
+
+.too-small + .report {
+  background: red;
+  -webkit-animation: alert 0.5s infinite;
+          animation: alert 0.5s infinite;
+  border: solid thin red;
+}
+.too-small + .report:before {
+  content: "TOO SMALL!";
+}
+
+@-webkit-keyframes alert {
+  0% {
+    background: red;
+    color: white;
+  }
+  49% {
+    background: red;
+    color: white;
+  }
+  50% {
+    background: white;
+    color: red;
+  }
+  100% {
+    background: white;
+    color: red;
+  }
+}
+
+@keyframes alert {
+  0% {
+    background: red;
+    color: white;
+  }
+  49% {
+    background: red;
+    color: white;
+  }
+  50% {
+    background: white;
+    color: red;
+  }
+  100% {
+    background: white;
+    color: red;
+  }
+}
