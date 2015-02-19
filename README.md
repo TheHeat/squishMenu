@@ -9,7 +9,7 @@ The script measures the width of each menu item to create an <var>itemsWidth</va
 
 Setting fixed breakpoints in designs isn't always possible. Clients may be apt to add very long menu items and knacker up your beautiful design.
 
-By basing the menu state on _the actual conditions_ ie the width of the menu-items in use and the available space for them, we can hold off hiding or navigaetion items until we *really* need to.
+By basing the menu state on _the actual conditions_ ie the width of the menu-items in use and the available space for them, we can hold off hiding our navigation items until we *really* need to.
 
 I've included some basic styles to illustrate the point in the demo, and [there's a CodePen version you can play with too](http://codepen.io/TheHeat/pen/jEqqvW).
 
