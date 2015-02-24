@@ -3,7 +3,7 @@
 /*
 * squishMenu 0.1
 *
-* Copyright 2015, Marc Heatley @marchetley http://properdesign.rs
+* Copyright 2015, Marc Heatley @marcheatley http://properdesign.rs
 * jQuery plugin which adds state classes to the targetted element
 *
 * Depends on the targetted element containing only .menu-item(s)
