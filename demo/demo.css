@@ -29,6 +29,13 @@ nav .menu {
   margin-left: 0.5em;
 }
 
+.squish-ready .menu-item {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
 .menu-toggle {
   cursor: pointer;
   display: none;
@@ -61,7 +68,6 @@ nav .menu {
 }
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 2em;
   line-height: 1.4;
 }
