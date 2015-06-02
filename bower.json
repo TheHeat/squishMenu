@@ -1,0 +1,26 @@
+{
+  "name": "squishMenu",
+  "version": "1.0.0",
+  "homepage": "https://github.com/TheHeat/squishMenu",
+  "authors": [
+    "TheHeat <marc@properdesign.rs>"
+  ],
+  "description": "Adds .too-small state to menus based on inline widths",
+  "main": "jquery.squishmenu.js",
+  "keywords": [
+    "responsive",
+    "menus",
+    "jquery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jQuery": "latest"
+  }
+}
