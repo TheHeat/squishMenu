@@ -21,6 +21,6 @@ squishMenu now adds a <code>.squish-ready</code> class when it's done its sums. 
 
 1. squishMenu uses jQuery - you'll need that.
 2. Target your container with <code>$('#your-container').squishMenu();</code>
-3. The script looks for and measures the combined width of all <code>.list-item</code> elements inside the targetted container. This is a naming convention from WordPress that is as good as any.
+3. The script looks for and measures the combined width of all <code>.menu-item</code> elements inside the targetted container. This is a naming convention from WordPress that is as good as any.
 4. It's important that the menu-items are <code>display:inline-block;</code> in their default state. Anything fancypants like flexbox wont give you a usable measurement to compare to the container. (you can flex them up after .squish-ready is added).
 6. The plugin assumes you have a `.menu-toggle` element in the container for opening and closing the menu when it is `.too-small`. Clicking the `.menu-toggle` will add/remove a `.is-open` class to the container.
