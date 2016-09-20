@@ -1,7 +1,7 @@
 /*global jQuery */
 
 /*
-* squishMenu 0.2
+* squishMenu 0.3
 *
 * jQuery plugin which adds state classes to the targetted element
 *
@@ -33,70 +33,63 @@
 *
 */
 
-(function (factory) {
-  // If there is a variable named module and it has an exports property,
-  // then we're working in a Node-like environment. Use require to load
-  // the jQuery object that the module system is using and pass it in.
-  if(typeof module === "object" && typeof module.exports === "object") {
-    factory(require("jquery"), window, document);
-  }
-  // Otherwise, we're working in a browser, so just pass in the global
-  // jQuery object.
-  else {
-    factory(jQuery, window, document);
-  }
-}(function($, window, document, undefined) {
-  // This code will receive whatever jQuery object was passed in from
-  // the function above and will attach the tipso plugin to it.
+// For compatability with Browserfy and Webpack
+if(typeof require === "function"){
+  // We're in a packaging environment
+  global.$ = global.jQuery = require('jquery');
+}
+
+(function( $ ){
+
   $.fn.squishMenu = function() {
 
-  	container = this;
-  	var itemsWidth = getItemsWidth(function(){
-  		// After we've calculated the width of all the .menu-items
-  		// add class .squish-ready to the container
-  		container.addClass('squish-ready');
-  	});
+    container = this;
+    var itemsWidth = getItemsWidth(function(){
+      // After we've calculated the width of all the .menu-items
+      // add class .squish-ready to the container
+      container.addClass('squish-ready');
+    });
 
-  	// Add up the widths of all the .menu-items
-  	// We only do it once in the default state
-  	// because they're apt not to change width when the container is .too-small
-  	function getItemsWidth(callback){
-  		var sum = 0;
-  		container.find('.menu-item').each( function(callback){
-  			var elementWidth = $(this).outerWidth(true);
-  			sum += elementWidth;
-  		});
+    // Add up the widths of all the .menu-items
+    // We only do it once in the default state
+    // because they're apt not to change width when the container is .too-small
+    function getItemsWidth(callback){
+      var sum = 0;
+      container.find('.menu-item').each( function(callback){
+        var elementWidth = $(this).outerWidth(true);
+        sum += elementWidth;
+      });
 
-  		typeof callback === 'function' && callback();
-  		return sum;
-  	};
+      typeof callback === 'function' && callback();
+      return sum;
+    };
 
-  	// Set appropriate classes
-  	function setStates(){
+    // Set appropriate classes
+    function setStates(){
 
-  		containerWidth = container.width();
+      containerWidth = container.width();
 
-  		if (itemsWidth <= containerWidth) {
-  			container.removeClass('too-small');
-  			container.removeClass('is-open');
-  		}
+      if (itemsWidth <= containerWidth) {
+        container.removeClass('too-small');
+        container.removeClass('is-open');
+      }
 
-  		if (itemsWidth > containerWidth) {
-  			container.addClass('too-small');
-  		}
-  	}
+      if (itemsWidth > containerWidth) {
+        container.addClass('too-small');
+      }
+    }
 
-  	setStates();
+    setStates();
 
-  	$(window).resize(function() {
-  		setStates();
-  	});
+    $(window).resize(function() {
+      setStates();
+    });
 
-  	// Click the .menu-toggle to open the menu. Obvs.
-  	$( '.menu-toggle').click(function(){
-  		container.toggleClass('is-open');
-  	});
+    // Click the .menu-toggle to open the menu. Obvs.
+    $( '.menu-toggle').click(function(){
+      container.toggleClass('is-open');
+    });
   }
 
-}));
-
+// Requires jQuery
+})( window.jQuery );
