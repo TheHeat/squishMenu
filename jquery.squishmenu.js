@@ -36,7 +36,7 @@
 // For compatability with Browserfy and Webpack
 if(typeof require === "function"){
   // We're in a packaging environment
-  global.$ = global.jQuery = require('jquery');
+  window.$ = window.jQuery = require('jquery');
 }
 
 (function( $ ){
