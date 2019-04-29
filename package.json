@@ -1,7 +1,7 @@
 {
   "name": "squishMenu",
-  "version": "1.1.0",
-  "main": "jquery.squishmenu.js",
+  "version": "2.1.0",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,8 +11,7 @@
   "description": "Adds .too-small state to menus based on inline widths",
   "keywords": [
     "responsive",
-    "menus",
-    "jquery"
+    "menus"
   ],
   "license": "MIT",
   "repository": {
@@ -29,8 +28,5 @@
     "bower_components",
     "test",
     "tests"
-  ],
-  "dependencies": {
-    "jquery": ">=1.8.3"
-  }
+  ]
 }

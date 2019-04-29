@@ -1,72 +1,33 @@
 // Demo only
-// Use jquery.squishmenu.js in the root
-var containerWidth;
-var itemsWidth;
+let containerWidth;
+let itemsWidth;
 
-function reportWidths(){
-  $('#container-width').html(containerWidth);
-  $('#items-width').html(itemsWidth);
-}
+const reportWidths = () => {
+  document.querySelector("#container-width").textContent = containerWidth;
+  document.querySelector("#items-width").textContent = itemsWidth;
+};
 
-// squishMenu
-	$.fn.squishMenu = function() {
+// Add up the widths of all the .menu-items
+// We only do it once in the default state
+// because they're apt to change width when the container is .too-small
+const getItemsWidth = (container, callback) => {
+  var sum = 0;
 
-		container = this;
-		itemsWidth = getItemsWidth(function(){
-			// After we've calculated the width of all the .menu-items
-			// add class .squish-ready to the container
-			container.addClass('squish-ready');
-		});
+  container.querySelectorAll(".menu-item").forEach(item => {
+    sum += item.offsetWidth;
+  });
 
-		// Add up the widths of all the .menu-items
-		// We only do it once in the default state
-		// because they're apt to change width when the container is .too-small
-		function getItemsWidth(callback){
-			var sum = 0;
-			container.find('.menu-item').each( function(){
-				var elementWidth = $(this).outerWidth(true);
-				sum += elementWidth;
-			});
+  typeof callback === "function" && callback();
+  return sum;
+};
 
-			typeof callback === 'function' && callback();
-			return sum;
-		};
+// Demo only
+window.onresize = reportWidths;
 
-		// Set appropriate
-		function setStates(){
+document.addEventListener("DOMContentLoaded", () => {
+  squishMenu({ containerId: "menu-1", toggleClass: ".menu-1-toggle" });
+  squishMenu({ containerId: "menu-2", toggleClass: ".menu-2-toggle" });
 
-			containerWidth = container.width();
-
-			if (itemsWidth <= containerWidth) {
-				container.removeClass('too-small');
-				container.removeClass('is-open');
-			}
-
-			if (itemsWidth > containerWidth) {
-				container.addClass('too-small');
-			}
-		}
-
-		setStates();
-
-		$(window).resize(function() {
-			setStates();
-		});
-
-		// Click the .menu-toggle to open the menu. Obvs.
-		container.find('.menu-toggle').click(function(){
-			container.toggleClass('is-open');
-		});
-	}
-
-$(document).ready(function(){
-	$('#site-nav').squishMenu();
-
-	// Demo only
-	reportWidths();
-
-	$(window).resize(function(){
-	  reportWidths();
-	});
-
+  /// Demo only
+  reportWidths();
 });
