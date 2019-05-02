@@ -13,7 +13,7 @@ getItemsWidth = (container, callback) => {
 };
 
 // squishMenu
-export default (squishMenu = options => {
+const squishMenu = options => {
   const container = document.getElementById(options.containerId);
 
   itemsWidth = getItemsWidth(container, () => {
@@ -46,4 +46,6 @@ export default (squishMenu = options => {
       container.classList.toggle("is-open");
     })
   );
-});
+};
+
+export default squishMenu;
