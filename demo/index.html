@@ -10,7 +10,6 @@
     />
     <link rel="stylesheet" href="demo.css" />
 
-    <script src="../index.js"></script>
     <script src="demo.js"></script>
   </head>
   <body>
@@ -58,8 +57,18 @@ itemsWidth: <span id="items-width"></span>
     <h2>User Manual</h2>
     <ol>
       <li>
-        Target your container with
-        <code>$('#your-container').squishMenu();</code>
+        Target your menu container element ID and toggle class name
+        <code>
+          <pre>
+squishMenu(
+  { 
+    containerId: "menu-1", 
+    toggleClass: ".menu-1-toggle" 
+  }
+);
+</pre
+          >
+        </code>
       </li>
       <li>
         The script looks for and measures the combined width of all
@@ -76,10 +85,15 @@ itemsWidth: <span id="items-width"></span>
     <nav id="menu-2">
       <span class="menu-2-toggle  menu-toggle">Menu</span>
       <ul class="menu">
-        <li class="menu-item"><a href="#">Home</a></li>
-        <li class="menu-item"><a href="#">About</a></li>
-        <li class="menu-item"><a href="#">Contact Us</a></li>
-        <li class="menu-item"><a href="#">Our Services</a></li>
+        <li class="menu-item"><a href="#">Contact</a></li>
+        <li class="menu-item"><a href="#">FAQ</a></li>
+        <li class="menu-item"><a href="#">Blog</a></li>
+        <li class="menu-item"><a href="#">Location Map</a></li>
+        <li class="menu-item"><a href="#">Privacy Policy</a></li>
+        <li class="menu-item"><a href="#">Another Thing</a></li>
+        <li class="menu-item"><a href="#">Location Map</a></li>
+        <li class="menu-item"><a href="#">Privacy Policy</a></li>
+        <li class="menu-item"><a href="#">Another Thing</a></li>
       </ul>
     </nav>
   </body>

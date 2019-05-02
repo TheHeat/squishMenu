@@ -1,5 +1,19 @@
+// Add up the widths of all the .menu-items
+// We only do it once in the default state
+// because they're apt to change width when the container is .too-small
+getItemsWidth = (container, callback) => {
+  var sum = 0;
+
+  container.querySelectorAll(".menu-item").forEach(item => {
+    sum += item.offsetWidth;
+  });
+
+  typeof callback === "function" && callback();
+  return sum;
+};
+
 // squishMenu
-squishMenu = options => {
+export default (squishMenu = options => {
   const container = document.getElementById(options.containerId);
 
   itemsWidth = getItemsWidth(container, () => {
@@ -32,4 +46,4 @@ squishMenu = options => {
       container.classList.toggle("is-open");
     })
   );
-};
+});
