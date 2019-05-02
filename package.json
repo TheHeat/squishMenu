@@ -1,12 +1,12 @@
 {
   "name": "squishMenu",
   "version": "2.2.1",
-  "main": "index.js",
+  "main": "dist/squishMenu.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "authors": [
-    "TheHeat <marc@properdesign.rs>"
+    "TheHeat <marc@properdesign.co.uk>"
   ],
   "description": "Adds .too-small state to menus based on inline widths",
   "keywords": [
