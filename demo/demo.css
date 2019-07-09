@@ -1,11 +1,16 @@
-.menu-link, .menu-item a, .menu-toggle {
+.menu-link,
+.menu-item a,
+.menu-toggle {
   text-decoration: none;
   color: black;
   display: block;
+  min-width: min-content;
   padding: 1em;
   background: silver;
 }
-.menu-link:hover, .menu-item a:hover, .menu-toggle:hover {
+.menu-link:hover,
+.menu-item a:hover,
+.menu-toggle:hover {
   background: #a7a7a7;
 }
 
@@ -13,27 +18,12 @@ nav .menu {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   width: 100%;
 }
 
-.menu-item {
-  -webkit-flex-shrink: 0;
-      -ms-flex-negative: 0;
-          flex-shrink: 0;
-}
 .menu-item + .menu-item {
   margin-left: 0.5em;
-}
-
-.squish-ready .menu-item {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
 }
 
 .menu-toggle {
@@ -46,15 +36,10 @@ nav .menu {
 }
 
 .too-small ul {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   max-height: 0;
   overflow: hidden;
-  -webkit-transition: 0.5s;
-          transition: 0.5s;
+  transition: 0.5s;
 }
 
 .too-small .menu-item {
@@ -64,7 +49,7 @@ nav .menu {
 .too-small.is-open ul {
   max-height: 60em;
   -webkit-transition: 1s;
-          transition: 1s;
+  transition: 1s;
 }
 
 body {
@@ -93,11 +78,18 @@ header {
 .too-small + .report {
   background: red;
   -webkit-animation: alert 0.5s infinite;
-          animation: alert 0.5s infinite;
+  animation: alert 0.5s infinite;
   border: solid thin red;
 }
 .too-small + .report:before {
   content: "TOO SMALL!";
+}
+
+.menu-container {
+  border: solid;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: aliceblue;
 }
 
 @-webkit-keyframes alert {

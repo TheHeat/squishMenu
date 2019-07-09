@@ -1,26 +1,31 @@
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>squishMenu.js</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"
-    />
-    <link rel="stylesheet" href="demo.css" />
+<head>
+  <meta charset="UTF-8" />
+  <title>squishMenu.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script src="demo.js"></script>
-  </head>
-  <body>
-    <header>
-      <h1>squishMenu.js</h1>
-      <p>
-        Automagically squishes menus the minute they get too big for their boots
-      </p>
-    </header>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
+  <link rel="stylesheet" href="demo.css" />
+
+  <script src="demo.js"></script>
+</head>
+
+<body>
+
+  <h1>squishMenu.js automagically squishes menus the minute they get too big for their boots</h1>
+  <p>Actually it doesn't.</p>
+  <p>
+    It just makes it easier for <em>you</em> to squish the menu when you need to by alerting you to the fact the
+    container
+    is <code>.too-small</code>. What you decide to do with that information is up to you.
+  </p>
+
+
+
+  <div class="menu-container">
     <nav id="menu-1">
-      <span class="menu-1-toggle menu-toggle">Menu</span>
+      <span class="menu-1-toggle menu-toggle">Menu 1</span>
       <ul class="menu">
         <li class="menu-item"><a href="#">Home</a></li>
         <li class="menu-item"><a href="#">About</a></li>
@@ -28,62 +33,12 @@
         <li class="menu-item"><a href="#">Our Services</a></li>
       </ul>
     </nav>
+  </div>
 
-    <pre class="report">
-containerWidth: <span id="container-width"></span>
-itemsWidth: <span id="items-width"></span>
-</pre>
 
-    <p>Actually it doesn't.</p>
-
-    <p>
-      It just makes it easier for <em>you</em> to squish the menu when you need
-      to by alerting you to the fact the container is <code>.too-small</code>.
-      What you decide to do with that information is up to you.
-    </p>
-
-    <p>
-      The script measures the width of each menu item to create an
-      <var>itemsWidth</var> value and compares it to the
-      <var>containerWidth</var>. I've included some basic styles to illustrate
-      the point.
-    </p>
-
-    <p>
-      You can also have a second toggle button...
-      <button class="menu-1-toggle">Toggle Menu 1</button>
-    </p>
-
-    <h2>User Manual</h2>
-    <ol>
-      <li>
-        Target your menu container element ID and toggle class name
-        <code>
-          <pre>
-squishMenu(
-  { 
-    containerId: "menu-1", 
-    toggleClass: ".menu-1-toggle" 
-  }
-);
-</pre
-          >
-        </code>
-      </li>
-      <li>
-        The script looks for and measures the combined width of all
-        <code>.list-item</code> elements inside the targetted container. This is
-        a naming convention from WordPress that is as good as any.
-      </li>
-      <li>
-        It's important that the menu-items are
-        <code>display:inline-block;</code> in their default state. Anything
-        fancypants like flexbox wont give you a usable measurement to compare to
-        the container.
-      </li>
-    </ol>
+  <div class="menu-container">
     <nav id="menu-2">
-      <span class="menu-2-toggle  menu-toggle">Menu</span>
+      <span class="menu-2-toggle  menu-toggle">Menu 2</span>
       <ul class="menu">
         <li class="menu-item"><a href="#">Contact</a></li>
         <li class="menu-item"><a href="#">FAQ</a></li>
@@ -92,9 +47,54 @@ squishMenu(
         <li class="menu-item"><a href="#">Privacy Policy</a></li>
         <li class="menu-item"><a href="#">Another Thing</a></li>
         <li class="menu-item"><a href="#">Location Map</a></li>
-        <li class="menu-item"><a href="#">Privacy Policy</a></li>
-        <li class="menu-item"><a href="#">Another Thing</a></li>
       </ul>
     </nav>
-  </body>
+  </div>
+
+
+  <p>
+    The script measures the width of each menu item to create an
+    <var>itemsWidth</var> value and compares it to the
+    <var>containerWidth</var>. I've included some basic styles to illustrate
+    the point.
+  </p>
+
+  <p>
+    Because the menu toggle is defined by a class name, it's possible to create additional, external menu toggles.
+
+  </p>
+  <button class="menu-1-toggle">Toggle Menu 1</button>
+  <br /><br />
+  <button class="menu-2-toggle">Toggle Menu 2</button>
+  <br /><br />
+  <h2>User Manual</h2>
+  <ol>
+    <li>
+      Target your menu container element ID and toggle class name
+      <code>
+        <pre>
+squishMenu(
+  { 
+    containerId: "menu-1", 
+    toggleClass: "menu-1-toggle" 
+  }
+);
+</pre>
+      </code>
+    </li>
+    <li>
+      The script looks for and measures the combined width of all
+      <code>.list-item</code> elements inside the targetted container. This is
+      a naming convention from WordPress that is as good as any.
+    </li>
+    <li>
+      It's important that the menu-items are
+      <code>display:inline-block;</code> in their default state. Anything
+      fancypants like flexbox wont give you a usable measurement to compare to
+      the container.
+    </li>
+  </ol>
+
+</body>
+
 </html>
