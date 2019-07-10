@@ -4,7 +4,7 @@ module.exports = {
   entry: "./src/squishMenu.js",
   mode: "production",
   output: {
-    filename: "main.js",
+    filename: "squishMenu.js",
     path: path.resolve(__dirname, "dist")
   }
 };
