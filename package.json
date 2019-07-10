@@ -1,16 +1,17 @@
 {
   "name": "squishMenu",
-  "version": "2.2.2",
-  "main": "dist/squishMenu.js",
+  "version": "2.2.3",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "authors": [
     "TheHeat <marc@properdesign.co.uk>"
   ],
-  "description": "Adds .too-small state to menus based on inline widths",
+  "description": "Adds .too-small class to menu containers based on their default styled widths",
   "keywords": [
     "responsive",
+    "DOM",
     "menus"
   ],
   "license": "MIT",
@@ -25,8 +26,11 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5"
+  }
 }
