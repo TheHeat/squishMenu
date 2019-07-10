@@ -1,6 +1,6 @@
 {
   "name": "squishMenu",
-  "version": "2.2.4",
+  "version": "2.2.6",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
@@ -14,6 +14,13 @@
     "DOM",
     "menus"
   ],
+  "files": [
+    "LICENSE",
+    "README.md",
+    "src/",
+    "dist/"
+  ],
+  "main": "./dist/squishMenu.js",
   "license": "MIT",
   "repository": {
     "type": "git",
