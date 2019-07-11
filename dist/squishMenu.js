@@ -1,1 +1,195 @@
-!function(e){var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var r in e)n.d(o,r,function(t){return e[t]}.bind(null,r));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";n.r(t);var o=(e,t)=>{let n=0;const o=e.querySelectorAll(".menu-item");return o.length>0?o.forEach(e=>{n+=e.offsetWidth}):console.error("No .menu-items found in the container"),"function"==typeof t&&t(),n};t.default=e=>{const t=document.getElementById(e.containerId);if(void 0===t)console.error("containerId is undefined");else if(null===t)console.error("containerId is not available");else{const r=o(t,()=>{t.classList.add("squish-ready")});function n(){const e=t.offsetWidth;r<=e&&(t.classList.remove("too-small"),t.classList.remove("is-open")),r>e&&t.classList.add("too-small")}n(),window.addEventListener("resize",n),document.getElementsByClassName(e.toggleClass).length>0?document.querySelectorAll("."+e.toggleClass).forEach(e=>e.addEventListener("click",()=>{t.classList.toggle("is-open")})):console.error("No toggleClass found or toggleClass is undefined")}}}]);
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define("squishMenu", [], factory);
+	else if(typeof exports === 'object')
+		exports["squishMenu"] = factory();
+	else
+		root["squishMenu"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/squishMenu.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/getItemsWidth.js":
+/*!******************************!*\
+  !*** ./src/getItemsWidth.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// Add up the widths of all the .menu-items
+// We only do it once in the default state
+// because they're apt to change width when the container is .too-small
+const getItemsWidth = (container, callback) => {
+  let sum = 0;
+  const items = container.querySelectorAll('.menu-item');
+
+  if (items.length > 0) {
+    items.forEach(item => {
+      sum += item.offsetWidth;
+    });
+  } else {
+    console.error('No .menu-items found in the container');
+  }
+
+  if (typeof callback === 'function') callback();
+  return sum;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getItemsWidth);
+
+/***/ }),
+
+/***/ "./src/squishMenu.js":
+/*!***************************!*\
+  !*** ./src/squishMenu.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getItemsWidth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getItemsWidth */ "./src/getItemsWidth.js");
+
+
+// squishMenu
+const squishMenu = options => {
+  const container = document.getElementById(options.containerId);
+
+  if (container === undefined) {
+    console.error('containerId is undefined');
+  } else if (container === null) {
+    console.error('containerId is not available');
+  } else {
+    const itemsWidth = Object(_getItemsWidth__WEBPACK_IMPORTED_MODULE_0__["default"])(container, () => {
+      // After we've calculated the width of all the .menu-items
+      // add class .squish-ready to the container
+      container.classList.add('squish-ready');
+    });
+
+    // Set appropriate classes
+    const setStates = () => {
+      const containerWidth = container.offsetWidth;
+
+      if (itemsWidth <= containerWidth) {
+        container.classList.remove('too-small');
+        container.classList.remove('is-open');
+      }
+
+      if (itemsWidth > containerWidth) {
+        container.classList.add('too-small');
+      }
+    };
+
+    setStates();
+
+    window.addEventListener('resize', setStates);
+
+    const toggles = document.getElementsByClassName(options.toggleClass);
+
+    if (toggles.length > 0) {
+      // Click the .menu-toggle to open the menu. Obvs.
+      document.querySelectorAll(`.${options.toggleClass}`).forEach(item => item.addEventListener('click', () => {
+        container.classList.toggle('is-open');
+      }));
+    } else {
+      console.error('No toggleClass found or toggleClass is undefined');
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (squishMenu);
+
+/***/ })
+
+/******/ });
+});
+//# sourceMappingURL=squishMenu.js.map

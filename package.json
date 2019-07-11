@@ -1,9 +1,10 @@
 {
   "name": "squishMenu",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack --env dev && webpack --env build",
+    "start": "webpack --progress --colors --watch --env dev",
+    "prepublishOnly": "rm -rf dist/* && npm run build"
   },
   "authors": [
     "TheHeat <marc@properdesign.co.uk>"
@@ -37,7 +38,21 @@
     "tests"
   ],
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "raw-loader": "^0.5.1",
     "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5"
+    "webpack-cli": "^3.3.5",
+    "yargs": "^10.1.2"
   }
 }

@@ -1,10 +1,57 @@
-const path = require("path");
+/* global __dirname, require, module */
 
-module.exports = {
-  entry: "./src/squishMenu.js",
-  mode: "production",
+const webpack = require("webpack");
+const path = require("path");
+const env = require("yargs").argv.env; // use --env with webpack 2
+const pkg = require("./package.json");
+
+const libraryName = pkg.name;
+
+let plugins = [],
+  outputFile,
+  mode;
+
+plugins.push(
+  new webpack.DefinePlugin({
+    "global.GENTLY": false
+  })
+);
+
+if (env === "dev") {
+  mode = "development";
+  outputFile = `${libraryName}.js`;
+} else {
+  mode = "production";
+  outputFile = `${libraryName}.min.js`;
+}
+
+const config = {
+  entry: `${__dirname}/src/squishMenu.js`,
+  devtool: "source-map",
+  mode,
+  target: "node",
   output: {
-    filename: "squishMenu.js",
-    path: path.resolve(__dirname, "dist")
-  }
+    path: `${__dirname}/dist`,
+    globalObject: "this",
+    filename: outputFile,
+    library: libraryName,
+    libraryTarget: "umd",
+    umdNamedDefine: true
+  },
+  module: {
+    rules: [
+      {
+        test: /(\.jsx|\.js|\.json)$/,
+        use: ["babel-loader", "eslint-loader"],
+        exclude: /(node_modules|bower_components)/
+      }
+    ]
+  },
+  resolve: {
+    modules: [path.resolve("./node_modules"), path.resolve("./src")],
+    extensions: [".js", ".json"]
+  },
+  plugins
 };
+
+module.exports = config;

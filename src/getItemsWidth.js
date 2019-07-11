@@ -3,17 +3,17 @@
 // because they're apt to change width when the container is .too-small
 const getItemsWidth = (container, callback) => {
   let sum = 0;
-  const items = container.querySelectorAll(".menu-item");
+  const items = container.querySelectorAll('.menu-item');
 
   if (items.length > 0) {
-    items.forEach(item => {
+    items.forEach((item) => {
       sum += item.offsetWidth;
     });
   } else {
-    console.error("No .menu-items found in the container");
+    console.error('No .menu-items found in the container');
   }
 
-  typeof callback === "function" && callback();
+  if (typeof callback === 'function') callback();
   return sum;
 };
 
