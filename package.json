@@ -38,8 +38,12 @@
     "tests"
   ],
   "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.0.3",
     "babel-loader": "^7.1.2",
     "babel-plugin-add-module-exports": "^0.2.1",
@@ -54,5 +58,8 @@
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",
     "yargs": "^10.1.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.7.0"
   }
 }

@@ -100,20 +100,26 @@ return /******/ (function(modules) { // webpackBootstrap
 /*!******************************!*\
   !*** ./src/getItemsWidth.js ***!
   \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
 // Add up the widths of all the .menu-items
 // We only do it once in the default state
 // because they're apt to change width when the container is .too-small
-const getItemsWidth = (container, callback) => {
-  let sum = 0;
-  const items = container.querySelectorAll('.menu-item');
+var getItemsWidth = function getItemsWidth(container, callback) {
+  var sum = 0;
+  var items = container.querySelectorAll('.menu-item');
 
   if (items.length > 0) {
-    items.forEach(item => {
+    items.forEach(function (item) {
       sum += item.offsetWidth;
     });
   } else {
@@ -124,7 +130,8 @@ const getItemsWidth = (container, callback) => {
   return sum;
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (getItemsWidth);
+var _default = getItemsWidth;
+exports.default = _default;
 
 /***/ }),
 
@@ -132,32 +139,38 @@ const getItemsWidth = (container, callback) => {
 /*!***************************!*\
   !*** ./src/squishMenu.js ***!
   \***************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _getItemsWidth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getItemsWidth */ "./src/getItemsWidth.js");
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _getItemsWidth = _interopRequireDefault(__webpack_require__(/*! ./getItemsWidth */ "./src/getItemsWidth.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // squishMenu
-const squishMenu = options => {
-  const container = document.getElementById(options.containerId);
+var squishMenu = function squishMenu(options) {
+  var container = document.getElementById(options.containerId);
 
   if (container === undefined) {
     console.error('containerId is undefined');
   } else if (container === null) {
     console.error('containerId is not available');
   } else {
-    const itemsWidth = Object(_getItemsWidth__WEBPACK_IMPORTED_MODULE_0__["default"])(container, () => {
+    var itemsWidth = (0, _getItemsWidth.default)(container, function () {
       // After we've calculated the width of all the .menu-items
       // add class .squish-ready to the container
       container.classList.add('squish-ready');
-    });
+    }); // Set appropriate classes
 
-    // Set appropriate classes
-    const setStates = () => {
-      const containerWidth = container.offsetWidth;
+    var setStates = function setStates() {
+      var containerWidth = container.offsetWidth;
 
       if (itemsWidth <= containerWidth) {
         container.classList.remove('too-small');
@@ -170,23 +183,24 @@ const squishMenu = options => {
     };
 
     setStates();
-
     window.addEventListener('resize', setStates);
-
-    const toggles = document.getElementsByClassName(options.toggleClass);
+    var toggles = document.getElementsByClassName(options.toggleClass);
 
     if (toggles.length > 0) {
       // Click the .menu-toggle to open the menu. Obvs.
-      document.querySelectorAll(`.${options.toggleClass}`).forEach(item => item.addEventListener('click', () => {
-        container.classList.toggle('is-open');
-      }));
+      document.querySelectorAll(".".concat(options.toggleClass)).forEach(function (item) {
+        return item.addEventListener('click', function () {
+          container.classList.toggle('is-open');
+        });
+      });
     } else {
       console.error('No toggleClass found or toggleClass is undefined');
     }
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (squishMenu);
+var _default = squishMenu;
+exports.default = _default;
 
 /***/ })
 

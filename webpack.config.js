@@ -41,9 +41,14 @@ const config = {
   module: {
     rules: [
       {
-        test: /(\.jsx|\.js|\.json)$/,
-        use: ["babel-loader", "eslint-loader"],
-        exclude: /(node_modules|bower_components)/
+        test: /(\.jsx|\.js)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"]
+          }
+        }
       }
     ]
   },
