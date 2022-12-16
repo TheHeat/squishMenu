@@ -1,6 +1,6 @@
 {
   "name": "squishMenu",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "scripts": {
     "build": "webpack --env dev && webpack --env build",
     "start": "webpack --progress --colors --watch --env dev",
