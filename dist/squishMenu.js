@@ -116,17 +116,17 @@ exports.default = void 0;
 // because they're apt to change width when the container is .too-small
 var getItemsWidth = function getItemsWidth(container, callback) {
   var sum = 0;
-  var items = container.querySelectorAll('.menu-item');
+  var items = container.querySelectorAll(".menu-item");
 
   if (items.length > 0) {
     items.forEach(function (item) {
       sum += item.offsetWidth;
     });
   } else {
-    console.error('No .menu-items found in the container');
+    console.log("No .menu-items found in the container");
   }
 
-  if (typeof callback === 'function') callback();
+  if (typeof callback === "function") callback();
   return sum;
 };
 
@@ -159,42 +159,42 @@ var squishMenu = function squishMenu(options) {
   var container = document.getElementById(options.containerId);
 
   if (container === undefined) {
-    console.error('containerId is undefined');
+    console.log("containerId is undefined");
   } else if (container === null) {
-    console.error('containerId is not available');
+    console.log("containerId is not available");
   } else {
     var itemsWidth = (0, _getItemsWidth.default)(container, function () {
       // After we've calculated the width of all the .menu-items
       // add class .squish-ready to the container
-      container.classList.add('squish-ready');
+      container.classList.add("squish-ready");
     }); // Set appropriate classes
 
     var setStates = function setStates() {
       var containerWidth = container.offsetWidth;
 
       if (itemsWidth <= containerWidth) {
-        container.classList.remove('too-small');
-        container.classList.remove('is-open');
+        container.classList.remove("too-small");
+        container.classList.remove("is-open");
       }
 
       if (itemsWidth > containerWidth) {
-        container.classList.add('too-small');
+        container.classList.add("too-small");
       }
     };
 
     setStates();
-    window.addEventListener('resize', setStates);
+    window.addEventListener("resize", setStates);
     var toggles = document.getElementsByClassName(options.toggleClass);
 
     if (toggles.length > 0) {
       // Click the .menu-toggle to open the menu. Obvs.
       document.querySelectorAll(".".concat(options.toggleClass)).forEach(function (item) {
-        return item.addEventListener('click', function () {
-          container.classList.toggle('is-open');
+        return item.addEventListener("click", function () {
+          container.classList.toggle("is-open");
         });
       });
     } else {
-      console.error('No toggleClass found or toggleClass is undefined');
+      console.log("No toggleClass found or toggleClass is undefined");
     }
   }
 };

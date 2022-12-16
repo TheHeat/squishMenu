@@ -1,100 +1,216 @@
 <html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>squishMenu.js</title>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1"
+		/>
 
-<head>
-  <meta charset="UTF-8" />
-  <title>squishMenu.js</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="demo-styles.css"
+		/>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
-  <link rel="stylesheet" href="demo.css" />
+		<script src="demo.js"></script>
 
-  <script src="demo.js"></script>
-</head>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				squishMenu({
+					containerId: "menu-1",
+					toggleClass: "menu-1-toggle",
+				});
 
-<body>
+				squishMenu({
+					containerId: "menu-2",
+					toggleClass: "menu-2-toggle",
+					itemClass: "item",
+					debug: true,
+					threshold: 700,
+				});
+			});
+		</script>
+	</head>
 
-  <h1>squishMenu.js automagically squishes menus the minute they get too big for their boots</h1>
-  <p>Actually it doesn't.</p>
-  <p>
-    It just makes it easier for <em>you</em> to squish the menu when you need to by alerting you to the fact the
-    container
-    is <code>.too-small</code>. What you decide to do with that information is up to you.
-  </p>
+	<body>
+		<h1>
+			squishMenu.js automagically squishes menus the minute they get too big for
+			their boots
+		</h1>
+		<p>Actually it doesn't.</p>
+		<p>
+			It just makes it easier for <em>you</em> to squish the menu when you need
+			to by alerting you to the fact the container is <code>.too-small</code>.
+			What you decide to do with that information is up to you.
+		</p>
 
+		<p>
+			The script measures the width of each menu item to create an
+			<var>itemsWidth</var> value and compares it to the
+			<var>containerWidth</var>. I've included some basic styles to illustrate
+			the point.
+		</p>
 
-
-  <div class="menu-container">
-    <nav id="menu-1">
-      <span class="menu-1-toggle menu-toggle">Menu 1</span>
-      <ul class="menu">
-        <li class="menu-item"><a href="#">Home</a></li>
-        <li class="menu-item"><a href="#">About</a></li>
-        <li class="menu-item"><a href="#">Contact Us</a></li>
-        <li class="menu-item"><a href="#">Our Services</a></li>
-      </ul>
-    </nav>
-  </div>
-
-
-  <div class="menu-container">
-    <nav id="menu-2">
-      <span class="menu-2-toggle  menu-toggle">Menu 2</span>
-      <ul class="menu">
-        <li class="menu-item"><a href="#">Contact</a></li>
-        <li class="menu-item"><a href="#">FAQ</a></li>
-        <li class="menu-item"><a href="#">Blog</a></li>
-        <li class="menu-item"><a href="#">Location Map</a></li>
-        <li class="menu-item"><a href="#">Privacy Policy</a></li>
-        <li class="menu-item"><a href="#">Another Thing</a></li>
-        <li class="menu-item"><a href="#">Location Map</a></li>
-      </ul>
-    </nav>
-  </div>
-
-
-  <p>
-    The script measures the width of each menu item to create an
-    <var>itemsWidth</var> value and compares it to the
-    <var>containerWidth</var>. I've included some basic styles to illustrate
-    the point.
-  </p>
-
-  <p>
-    Because the menu toggle is defined by a class name, it's possible to create additional, external menu toggles.
-
-  </p>
-  <button class="menu-1-toggle">Toggle Menu 1</button>
-  <br /><br />
-  <button class="menu-2-toggle">Toggle Menu 2</button>
-  <br /><br />
-  <h2>User Manual</h2>
-  <ol>
-    <li>
-      Target your menu container element ID and toggle class name
-      <code>
-        <pre>
+		<h2>User Manual</h2>
+		<p>
+			Target your menu container element with its ID and set a toggle classname
+		</p>
+		<code>
+			<pre>
 squishMenu(
-  { 
-    containerId: "menu-1", 
-    toggleClass: "menu-1-toggle" 
+  {
+    containerId: "menu-1",
+    toggleClass: "menu-1-toggle",
   }
 );
-</pre>
-      </code>
-    </li>
-    <li>
-      The script looks for and measures the combined width of all
-      <code>.list-item</code> elements inside the targetted container. This is
-      a naming convention from WordPress that is as good as any.
-    </li>
-    <li>
-      It's important that the menu-items are
-      <code>display:inline-block;</code> in their default state. Anything
-      fancypants like flexbox wont give you a usable measurement to compare to
-      the container.
-    </li>
-  </ol>
+</pre
+			>
+		</code>
 
-</body>
+		<div class="menu-container">
+			<nav id="menu-1">
+				<span class="menu-1-toggle menu-toggle">Menu 1</span>
+				<ul class="menu">
+					<li class="menu-item"><a href="#">Home</a></li>
+					<li class="menu-item"><a href="#">About</a></li>
+					<li class="menu-item"><a href="#">Contact Us</a></li>
+					<li class="menu-item"><a href="#">Our Services</a></li>
+				</ul>
+			</nav>
+			<div class="report"></div>
+		</div>
 
+		<p>
+			The script looks for and measures the combined width of all
+			<code>.list-item</code> elements inside the targetted container. This is a
+			naming convention from WordPress that is as good as any.
+		</p>
+		<p>
+			It's important that the menu-items aren't stretched more than their
+			minimum possible length in their default state. If they're usable
+			measurement to compare to the container. We add a
+			<code>.squish-ready</code> class once the measurements are taken so you
+			can sprinkle extra magic then.
+		</p>
+		<h3>Optional Params</h3>
+		<h4>threshold</h4>
+		<p>
+			There are paramaters to set a minimum width for the function to run. Set
+			in pixels, when the container is below that width it will always be
+			<code>.too-small</code> and <code>.below-threshold</code>
+		</p>
+		<h4>itemClass</h4>
+		<p>
+			You can overide the default menu item class. The default is
+			<code>.menu-item</code>
+		</p>
+		<h4>degug</h4>
+		<p>
+			<code>debug:true</code> will print the targeted container element and
+			calculated lengths to the console.
+		</p>
+		<code>
+			<pre>
+squishMenu(
+  {
+    containerId: "menu-2",
+    itemClass: "item",
+    toggleClass: "menu-2-toggle",
+    threshold: 700,
+    debug: true 
+  }
+);
+			</pre
+			>
+		</code>
+
+		<div class="menu-container">
+			<nav id="menu-2">
+				<span class="menu-2-toggle menu-toggle">Menu 2</span>
+				<ul class="menu">
+					<li class="item"><a href="#">Contact</a></li>
+					<li class="item"><a href="#">FAQ</a></li>
+					<li class="item"><a href="#">Blog</a></li>
+					<li class="item"><a href="#">Location Map</a></li>
+					<li class="item"><a href="#">Another thing</a></li>
+					<li class="item"><a href="#">And more</a></li>
+					<li class="item"><a href="#">One last thing</a></li>
+				</ul>
+			</nav>
+			<div class="report"></div>
+		</div>
+		<h3>Additional toggles</h3>
+		<p>
+			Because the menu toggle is defined by a class name, it's possible to
+			create additional, external menu toggles.
+		</p>
+		<div class="demo-toggles">
+			<button class="menu-1-toggle">Toggle Menu 1</button>
+			<button class="menu-2-toggle">Toggle Menu 2</button>
+		</div>
+
+		<h2>Params</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Param</th>
+					<th>Type</th>
+					<th>Default</th>
+					<th>Required</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>containerId</td>
+					<td>string</td>
+					<td>undefined</td>
+					<td>required</td>
+					<td>
+						The outer element of the menu that you want measurements to be based
+						on
+					</td>
+				</tr>
+				<tr>
+					<td>toggleClass</td>
+					<td>string</td>
+					<td>undefined</td>
+					<td>optional</td>
+					<td>A classname to attach menu toggle functionality to.</td>
+				</tr>
+				<tr>
+					<td>itemClass</td>
+					<td>string</td>
+					<td>menu-item</td>
+					<td>optional</td>
+					<td>The classname of the individual menu items to be measured.</td>
+				</tr>
+				<tr>
+					<td>threshold</td>
+					<td>number</td>
+					<td>undefined</td>
+					<td>optional</td>
+					<td>
+						A lower threshold for the function to run. Set in pixels, when the
+						container is below that width it will always be
+						<code>.too-small</code> and <code>.below-threshold</code>.
+					</td>
+				</tr>
+				<tr>
+					<td>debug</td>
+					<td>bool</td>
+					<td>false</td>
+					<td>optional</td>
+					<td>
+						If true squishMenu will log the container DOM node and measurements
+						to the console.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
 </html>

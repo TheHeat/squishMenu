@@ -1,0 +1,121 @@
+.menu-link, .menu-toggle, .menu-item a {
+  box-sizing: border-box;
+  text-decoration: none;
+  color: black;
+  display: block;
+  white-space: nowrap;
+  padding: 1em;
+  background: silver;
+}
+.menu-link:hover, .menu-toggle:hover, .menu-item a:hover {
+  background: adjust-lightness(silver, -10);
+}
+
+nav .menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  gap: 1em;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  display: none;
+}
+
+.too-small .menu-toggle {
+  display: block;
+}
+
+.too-small ul {
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.too-small.is-open ul {
+  max-height: 60em;
+  transition: 1s;
+}
+
+* {
+  box-sizing: border-box;
+}
+* > * {
+  box-sizing: inherit;
+}
+
+.item {
+  background: pink;
+}
+.item a {
+  display: block;
+  padding: 0.5em;
+  color: currentColor;
+  text-decoration: none;
+}
+
+body {
+  padding: 2rem;
+}
+
+pre {
+  padding: 1rem;
+  background-color: rgb(6, 35, 84);
+  color: yellow;
+  border-radius: 0.2em;
+}
+
+.report {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: yellowgreen;
+  font-size: small;
+  line-height: 0.8;
+}
+
+.report:before {
+  display: block;
+  content: "Bags of room";
+  padding: 0.5em;
+}
+
+.too-small + .report {
+  background: red;
+  animation: alert 0.5s infinite;
+  color: white;
+}
+
+.too-small + .report:before {
+  content: "TOO SMALL!";
+}
+
+.menu-container {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: aliceblue;
+}
+
+.demo-toggles {
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: aliceblue;
+}
+
+table {
+  text-align: left;
+}
+
+th,
+td {
+  border-bottom: solid thin;
+  padding: 0.5em;
+  vertical-align: top;
+}
+
+/*# sourceMappingURL=demo-styles.css.map */
