@@ -111,19 +111,22 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-// Add up the widths of all the .menu-items
+// Add up the widths of all the itemClass elements inside the container
 // We only do it once in the default state
 // because they're apt to change width when the container is .too-small
-var getItemsWidth = function getItemsWidth(container, callback) {
+var getItemsWidth = function getItemsWidth(_ref) {
+  var container = _ref.container,
+      itemClass = _ref.itemClass,
+      callback = _ref.callback;
   var sum = 0;
-  var items = container.querySelectorAll(".menu-item");
+  var items = container.querySelectorAll(".".concat(itemClass));
 
   if (items.length > 0) {
     items.forEach(function (item) {
-      sum += item.offsetWidth;
+      sum += item.offsetWidth * 1.1;
     });
   } else {
-    console.log("No .menu-items found in the container");
+    console.warn("No elements with itemClass found in the container");
   }
 
   if (typeof callback === "function") callback();
@@ -156,34 +159,48 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // squishMenu
 var squishMenu = function squishMenu(options) {
+  var itemClass = options.itemClass ? options.itemClass : "menu-item";
   var container = document.getElementById(options.containerId);
 
-  if (container === undefined) {
-    console.log("containerId is undefined");
-  } else if (container === null) {
-    console.log("containerId is not available");
+  if (container === undefined || container === null) {
+    console.warn("containerId is undefined");
   } else {
-    var itemsWidth = (0, _getItemsWidth.default)(container, function () {
-      // After we've calculated the width of all the .menu-items
-      // add class .squish-ready to the container
-      container.classList.add("squish-ready");
+    var itemsWidth = (0, _getItemsWidth.default)({
+      container: container,
+      itemClass: itemClass,
+      callback: function callback() {
+        // After we've calculated the width of all the menu items + 10%
+        // add class .squish-ready to the container
+        container.classList.add("squish-ready");
+      }
     }); // Set appropriate classes
 
-    var setStates = function setStates() {
+    var setClasses = function setClasses() {
       var containerWidth = container.offsetWidth;
 
-      if (itemsWidth <= containerWidth) {
-        container.classList.remove("too-small");
-        container.classList.remove("is-open");
+      if (options.debug === true) {
+        console.log({
+          container: container,
+          itemsWidth: itemsWidth,
+          containerWidth: containerWidth
+        });
       }
 
-      if (itemsWidth > containerWidth) {
+      if (options.threshold && containerWidth <= options.threshold) {
+        container.classList.add("below-threshold");
+        container.classList.add("too-small");
+      } else if (itemsWidth <= containerWidth) {
+        container.classList.remove("below-threshold");
+        container.classList.remove("too-small");
+        container.classList.remove("is-open");
+      } else if (itemsWidth > containerWidth) {
+        container.classList.remove(["below-threshold"]);
         container.classList.add("too-small");
       }
     };
 
-    setStates();
-    window.addEventListener("resize", setStates);
+    setClasses();
+    window.addEventListener("resize", setClasses);
     var toggles = document.getElementsByClassName(options.toggleClass);
 
     if (toggles.length > 0) {
@@ -194,7 +211,7 @@ var squishMenu = function squishMenu(options) {
         });
       });
     } else {
-      console.log("No toggleClass found or toggleClass is undefined");
+      console.warn("No toggleClass found or toggleClass is undefined");
     }
   }
 };
