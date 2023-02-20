@@ -57,7 +57,7 @@
     "raw-loader": "^0.5.1",
     "webpack": "^4.35.3",
     "webpack-cli": "^4.10.0",
-    "yargs": "^10.1.2"
+    "yargs": "^17.7.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0"
